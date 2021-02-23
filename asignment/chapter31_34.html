@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+//        input your name through prompt. for example name is "Ameen Alam"
+
+// input your DOB(date) through prompt. for example date is "24"
+
+// input your DOB(month) through prompt. for example month is "05"
+
+// input your DOB(year) through prompt. for example year is "1999"
+
+// print meassage in console.log() "Hello Ameen Alam, Good Morning, AfterNoon, Evening or Night"
+
+// print meassage in console.log() "Your DOB is {in pakistan standard time format}"
+
+// print meassage in console.log() "You are 20 years 7 Month 10 Days 19 Hours 20 Minutes 25 Seconds old"
+
+// "Your Age in Days 7510"
+
+// print meassage in console.log() "How much time left in your next birthday? 161 days 4 hours 39 minutes 34 seconds" or "happy Birth Day Ameen Alam. Today is Your 20th Birthday"
+
+    var name = prompt('Please enter your  name');
+     var date = +(prompt('Enter your birth date'));
+    var month = +(prompt('Enter your birth month'));
+    var year = +(prompt('Enter your birth year'));
+    
+    var currentDate = new Date();
+    
+    var currentHours = currentDate.getHours();
+    
+        
+
+    if(currentHours >= 00 && currentHours <= 04){
+        console.log('Hello ' + name + ', Good Night')
+    }
+    else if(currentHours >= 05 && currentHours <= 10){
+        console.log('Hello ' + name + ' Good Morning')
+    }
+    else if(currentHours >= 11 && currentHours <= 15){
+        console.log('Hello ' + name + ' Good Afternoon')
+    }
+    else if(currentHours >= 16 && currentHours <= 19){
+        console.log('Hello ' + name + ' Good Evening')
+    }
+    else if(currentHours >= 20 && currentHours <= 23){
+        console.log('Hello ' + name + ' Good Night')
+    }
+    else{
+        console.log('Hello ' + name)
+    }
+    
+    
+    var dob = new Date(year,(month -1), date);
+    console.log('Your date of birth is ' +dob);
+
+    var nextbday = new Date((currentDate.getFullYear() + 1), (month -1), date)
+       
+    var myDiff = currentDate.getTime() - dob.getTime();
+    var days = Math.floor(myDiff / (1000 * 60 * 60 *24 ))
+    var totalyear = currentDate.getFullYear() - dob.getFullYear();
+    var totalmonth = currentDate.getMonth() - dob.getMonth();
+    var totaldate = currentDate.getDate() - dob.getDate();
+    var totalHours = currentDate.getHours() - dob.getHours();
+    var totalMinutes = currentDate.getMinutes() - dob.getMinutes();
+    var totalSeconds = currentDate.getSeconds() - dob.getSeconds();
+
+
+
+
+
+    var next_myDiff = nextbday.getTime() - currentDate.getTime();
+    var nextDays = Math.floor(next_myDiff / (1000 * 60 * 60 *24 ))
+
+    var getDaysInMonth = function(month,year){
+        return new Date(year, month, 0).getDate();
+    }
+    if(dob.getDate() > currentDate.getDate()){
+        totalmonth = totalmonth - 1;
+        totaldate = totaldate + (getDaysInMonth(month, year))  ;
+    }
+
+    
+    
+    console.log('You are ' + totalyear + ' years ' + totalmonth + ' months ' + totaldate + ' days ' + totalHours + ' hours ' + totalMinutes + ' minutes ' + totalSeconds + ' seconds old.')
+
+    console.log('Your age in days is ' + days + '.');
+
+    if(currentDate.getDate() === dob.getDate() && currentDate.getMonth() === dob.getMonth()){
+        console.log('Happy Brthday ' + name);
+        }
+        else{
+            console.log('Your next birthday duration is ' + nextDays + ' Days.'  );
+        }
+
+
+        
+
+    
+   </script> 
+</body>
+</html>
